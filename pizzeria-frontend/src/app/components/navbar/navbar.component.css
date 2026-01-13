@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar-box{
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: fit-content;
+    padding: 10px;
+}
+
+.logo{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.logo img{
+  width: 30%;
+  height: 40%;
+}
+
+.links{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+}
+.navbar-box a{
+  text-decoration: none;
+  color: white;
+}

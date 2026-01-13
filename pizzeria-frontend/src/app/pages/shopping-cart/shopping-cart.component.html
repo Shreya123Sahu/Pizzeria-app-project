@@ -1,0 +1,84 @@
+<div class="container my-4" *ngIf="cartItems.length > 0; else noCart">
+  <div class="row">
+
+
+    <div class="col-lg-8">
+      <h1 class="h2 mb-4">My Cart</h1>
+
+      <div class="card shadow-sm">
+        <div class="card-body">
+
+          <div class="d-flex justify-content-between align-items-center border-bottom py-3"
+            *ngFor="let item of cartItems">
+
+            <div class="d-flex align-items-center gap-3">
+              <img [src]="item.image" class="img-fluid rounded" style="width: 80px; height: 80px; object-fit: cover" />
+
+              <div>
+                <h5 class="mb-1">{{ item.name }}</h5>
+                <p class="mb-0 text-muted">₹{{ item.price }}</p>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+              <button class="btn btn-outline-secondary btn-sm" (click)="decreaseQty(item)">-</button>
+              <span class="fw-bold">{{ item.qty }}</span>
+              <button class="btn btn-outline-secondary btn-sm" (click)="increaseQty(item)">+</button>
+            </div>
+
+            <!-- Delete -->
+            <button class="btn btn-outline-danger btn-sm" (click)="removeItem(item.id)">
+              🗑
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <h4 class="mt-4 text-end">
+        Sub Total : <span class="fw-bold">₹{{ subTotal }}</span>
+      </h4>
+    </div>
+
+    <div class="col-lg-4 mt-4 mt-lg-0">
+      <div class="card shadow-sm">
+        <div class="card-body">
+
+          <h4 class="mb-3">The total amount of</h4>
+
+          <div class="d-flex justify-content-between mb-2">
+            <span class="fw-semibold">Pizza:</span>
+            <span>₹{{ subTotal }}</span>
+          </div>
+
+          <div class="d-flex justify-content-between mb-3">
+            <span class="fw-semibold">Ingredients:</span>
+            <span>₹{{ ingredientTotal }}</span>
+          </div>
+
+          <hr />
+
+          <h4 class="d-flex justify-content-between">
+            <span>Total:</span>
+            <span class="fw-bold">₹{{ subTotal + ingredientTotal }}</span>
+          </h4>
+
+          <div class="d-grid gap-2 mt-4">
+            <button class="btn btn-success" (click)="payNow()">Pay</button>
+            <button class="btn btn-outline-secondary" (click)="cancel()">Clear</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<ng-template #noCart>
+  <div class="container text-center my-5">
+    <h1 class="mb-3">Your cart is empty!</h1>
+    <button class="btn btn-primary" (click)="goToOrder()">Order Pizza</button>
+  </div>
+</ng-template>

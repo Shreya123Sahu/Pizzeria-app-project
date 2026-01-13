@@ -1,0 +1,49 @@
+<div class="container my-5">
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered align-middle shadow-sm">
+      <tbody class="text-center">
+        <tr *ngFor="let ing of ingList">
+          <td class="w-25">
+            <img
+              [src]="ing.image"
+              alt="ing"
+              class="img-fluid rounded"
+              style="max-width: 60px"
+            />
+          </td>
+
+          <td class="fw-semibold fs-5">
+            {{ ing.iname }}
+          </td>
+
+          <td class="fw-bold text-success fs-5">
+            ₹{{ ing.price }}
+          </td>
+
+          <td>
+            <div class="d-flex justify-content-center align-items-center gap-3">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                [checked]="isSelected(ing.id)"
+                (change)="toggle(ing)"
+              />
+              <button
+                class="btn btn-success px-4 py-1"
+                (click)="toggle(ing)"
+              >
+                Add
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    class="mt-4 py-3 text-center fs-4 fw-bold text-warning bg-dark border border-3 border-warning rounded shadow"
+  >
+    Total Cost : ₹{{ total() }}
+  </div>
+</div>
